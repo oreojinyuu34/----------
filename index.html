@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アプリ開発の流れ </title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+
+  <style>
+    input[type="text"] {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>アプリ開発の流れ</h1>
+  <form id="appDevForm">
+    <label for="idea">1. アイデアの発想:</label>
+    <input type="text" id="idea" name="idea">
+
+    <label for="marketResearch">2. 市場調査:</label>
+    <input type="text" id="marketResearch" name="marketResearch">
+
+    <label for="design">3. 設計と仕様:</label>
+    <input type="text" id="design" name="design">
+
+    <label for="tools">4. 開発ツール・技術の選定:</label>
+    <input type="text" id="tools" name="tools">
+
+    <label for="development">5. 開発:</label>
+    <input type="text" id="development" name="development">
+
+    <label for="testing">6. テスト:</label>
+    <input type="text" id="testing" name="testing">
+
+    <label for="release">7. リリース:</label>
+    <input type="text" id="release" name="release">
+
+    <label for="marketing">8. マーケティング・プロモーション:</label>
+    <input type="text" id="marketing" name="marketing">
+
+    <label for="maintenance">9. メンテナンス・アップデート:</label>
+    <input type="text" id="maintenance" name="maintenance">
+  </form>
+
+  <button id="pdfButton">PDF出力</button>
+
+  <script>
+    document.getElementById("pdfButton").addEventListener("click", () => {
+      const pdf = new jsPDF();
+      pdf.setFont("helvetica", "normal"); // デフォルトフォントを設定
+      pdf.html(document.getElementById("appDevForm"), {
+        callback: function (pdf) {
+          pdf.save("app-development-process.pdf");
+        },
+      });
+    });
+  </script>
+</body>
+</html>
